@@ -1,0 +1,5 @@
+<div class="list-group">
+  <div *ngFor="let post of listPosts" class="list-group-item list-group-item-action flex-column align-items-start">
+    <app-post-item [post]="post"></app-post-item>
+  </div>
+</div>
