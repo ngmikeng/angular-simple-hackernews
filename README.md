@@ -1,6 +1,7 @@
 # AngularSimpleHackernews
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
+This project for purpose practice Angular 6 and Rxjs.
+Integrated with [HackerNews API](https://github.com/HackerNews/API).
+Generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
 
 ## Development server
 
@@ -9,6 +10,12 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+- Example add a module `core` and that will be import in `app` module.
+`ng generate module core --module=app`
+
+- Example add a service `Posts` in directory `app/posts`.
+`ng generate service app/posts/posts --flat`
 
 ## Build
 
