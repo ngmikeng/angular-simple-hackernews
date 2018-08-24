@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
+import { HackernewsService } from '../core/services/hackernews.service';
+import { IPost } from '../core/types/post';
+
+const LIMIT_ITEMS = 10;
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
 
-  constructor() { }
+  constructor(
+    private hackernewsService: HackernewsService
+  ) { }
 
-  getListPosts(): IPost[] {
-    return [
-      { id: 1, by: 'John', score: 100, time: Date.now(), title: 'Item 1' },
-      { id: 2, by: 'Doe', score: 88, time: Date.now(), title: 'Item 2' },
-      { id: 3, by: 'Pete', score: 99, time: Date.now(), title: 'Item 3' }
-    ];
+  getPostIds() {
+    return this.hackernewsService.getPostIds();
   }
-}
 
-export interface IPost {
-  id: number;
-  by: string;
-  score: number;
-  time: number;
-  title?: string;
+  getListPosts(type: string): Observable<IPost> {
+    return this.hackernewsService.getIds(type)
+      .pipe(
+        mergeMap((ids: number[]) => this.hackernewsService.getPostItems(ids.slice(0, LIMIT_ITEMS))),
+      )
+  }
 }

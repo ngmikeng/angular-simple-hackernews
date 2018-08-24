@@ -1,5 +1,8 @@
 <div class="d-flex w-100 justify-content-between">
-  <h5 class="mb-1">{{post.title}}</h5>
+  <h5 class="mb-1">
+    <a *ngIf="post.url" [href]="post.url">{{post.title}}</a>
+    <span *ngIf="!post.url">{{post.title}}</span>
+  </h5>
   <small>{{post.score}}</small>
 </div>
 <small>{{post.time*1000 | date:'short'}}</small>

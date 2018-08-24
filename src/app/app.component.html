@@ -3,11 +3,8 @@
     <a class="navbar-brand" href="#">AHN</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/posts/top">Top</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/posts/new">New</a>
+        <li class="nav-item" routerLinkActive="active" *ngFor="let menu of listMenus">
+          <a class="nav-link" [routerLink]="menu.route">{{menu.title}}</a>
         </li>
       </ul>
     </div>

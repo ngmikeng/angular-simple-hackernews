@@ -6,7 +6,10 @@ import { PostListComponent } from './post-list/post-list.component';
 const routes: Routes = [
   { path: '', redirectTo: 'top', pathMatch: 'full' },
   { path: 'top', component: PostListComponent },
-  { path: 'new', component: PostListComponent }
+  { path: 'new', component: PostListComponent },
+  { path: 'show', component: PostListComponent },
+  { path: 'ask', component: PostListComponent },
+  { path: 'job', component: PostListComponent }
 ];
 
 @NgModule({
