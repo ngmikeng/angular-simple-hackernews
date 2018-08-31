@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../posts.service';
+import { TimeService } from '../../core/services/time.service';
 import { IPost } from '../../core/types/post';
+
+const LIMIT_ITEMS = 10;
 
 @Component({
   selector: 'app-post-list',
@@ -10,20 +13,23 @@ import { IPost } from '../../core/types/post';
 })
 export class PostListComponent implements OnInit {
   listPosts: IPost[] = [];
+  private curLoadMoreIndex: number = 0;
 
   constructor(
     private postsService: PostsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private timeService: TimeService
   ) { }
 
   ngOnInit() {
     this.getListPosts();
   }
 
-  getListPosts() {
+  getListPosts(fromIndex?: number) {
     const type = this.activatedRoute.routeConfig.path;
-    this.postsService.getListPosts(type)
+    this.postsService.getListPosts(type, fromIndex)
       .subscribe(post => {
+        post.timeAgo = this.timeService.timeSince(post.time);
         this.listPosts.push(post);
         // sort by ids
         this.listPosts.sort((first, second) => {
@@ -33,6 +39,11 @@ export class PostListComponent implements OnInit {
           return firstIdIndex - secondIdIndex;
         });
       });
+  }
+
+  loadMore() {
+    this.curLoadMoreIndex = this.curLoadMoreIndex + LIMIT_ITEMS;
+    this.getListPosts(this.curLoadMoreIndex);
   }
 
 }

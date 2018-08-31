@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isCollapsed = false;
   listMenus = [
     { title: 'Top', route: '/posts/top' },
     { title: 'New', route: '/posts/new' },

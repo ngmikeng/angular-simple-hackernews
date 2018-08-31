@@ -3,6 +3,7 @@
     <a *ngIf="post.url" [href]="post.url">{{post.title}}</a>
     <span *ngIf="!post.url">{{post.title}}</span>
   </h5>
-  <small>{{post.score}}</small>
+  <small><b>{{ post.score <= 1 ? post.score + ' point' : post.score + ' points' }}</b></small>
 </div>
-<small>{{post.time*1000 | date:'short'}}</small>
+<small> by {{post.by}} - </small>
+<small>{{ post.timeAgo }} ago </small>
