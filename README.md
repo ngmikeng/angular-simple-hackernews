@@ -1,7 +1,13 @@
 # AngularSimpleHackernews
-This project for purpose practice Angular 6 and Rxjs.
-Integrated with [HackerNews API](https://github.com/HackerNews/API).
-Generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
+- This project for purpose practice Angular 6 and Rxjs.
+- Integrated with [HackerNews API](https://github.com/HackerNews/API).
+- This project is using the method `mergeMap()` operator of Rxjs to handle get data for list posts. 
+- Refer the implementation of other methods `concatMap()` and `forkJoin()` in this repository: https://github.com/ngmikeng/angular-playground/tree/master/angular-practical-rxjs.
+- Built with Bootstrap 4, ng-bootstrap.
+- Generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
+
+## Demo
+https://gqaioyqj.github.stackblitz.io
 
 ## Development server
 
@@ -15,7 +21,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 `ng generate module core --module=app`
 
 - Example add a service `Posts` in directory `app/posts`.
-`ng generate service app/posts/posts --flat`
+`ng generate service app/posts/posts`
 
 ## Build
 
