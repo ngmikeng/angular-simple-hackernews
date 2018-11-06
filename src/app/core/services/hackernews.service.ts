@@ -57,12 +57,12 @@ export class HackernewsService {
         tap((ids: number[]) => this.setPostIds(ids)),
         tap(_ => this.log(`getIds`)),
         catchError(this.handleError(`getIds`, []))
-      )
+      );
   }
 
-  getPostItems(ids: number[]): Observable<IPost> {
+  getItems(ids: number[]): Observable<IPost> {
     return from(ids).pipe(
       mergeMap(id => <Observable<IPost>> this.http.get<IPost>(`${this.apiUrl}/item/${id}.json`))
-    )
+    );
   }
 }

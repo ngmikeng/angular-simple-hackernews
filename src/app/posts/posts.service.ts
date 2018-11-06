@@ -22,7 +22,11 @@ export class PostsService {
   getListPosts(type: string, fromIndex: number = 0): Observable<IPost> {
     return this.hackernewsService.getIds(type)
       .pipe(
-        mergeMap((ids: number[]) => this.hackernewsService.getPostItems(ids.slice(fromIndex, fromIndex + LIMIT_ITEMS))),
-      )
+        mergeMap((ids: number[]) => this.hackernewsService.getItems(ids.slice(fromIndex, fromIndex + LIMIT_ITEMS))),
+      );
+  }
+
+  getListComments(ids: number[], fromIndex: number = 0): Observable<IPost> {
+    return this.hackernewsService.getItems(ids.slice(fromIndex, fromIndex + LIMIT_ITEMS));
   }
 }

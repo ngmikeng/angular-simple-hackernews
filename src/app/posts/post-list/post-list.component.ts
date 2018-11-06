@@ -13,7 +13,7 @@ const LIMIT_ITEMS = 10;
 })
 export class PostListComponent implements OnInit {
   listPosts: IPost[] = [];
-  private curLoadMoreIndex: number = 0;
+  private curLoadMoreIndex = 0;
 
   constructor(
     private postsService: PostsService,

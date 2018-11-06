@@ -4,7 +4,8 @@ export interface IPost {
   by: string;
   score: number;
   time: number;
-  timeAgo: string,
+  timeAgo: string;
   title?: string;
   url?: string;
+  kids?: number[];
 }

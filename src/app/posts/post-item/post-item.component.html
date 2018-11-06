@@ -5,5 +5,9 @@
   </h5>
   <small><b>{{ post.score <= 1 ? post.score + ' point' : post.score + ' points' }}</b></small>
 </div>
-<small> by {{post.by}} - </small>
-<small>{{ post.timeAgo }} ago </small>
+<span>
+  <small> by {{post.by}} - </small><small>{{ post.timeAgo }} ago </small>
+</span>
+<span *ngIf="post.kids && post.kids.length > 0">
+  | <a href="#" (click)="openComments($event)"><small>  {{post.kids.length}} comments</small></a>
+</span>
